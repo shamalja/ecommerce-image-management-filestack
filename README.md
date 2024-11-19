@@ -59,23 +59,11 @@ The Filestack JavaScript SDK is used to handle image uploads:
 
 **javascript**
 
-```javascript const client = filestack.init('YOUR_API_KEY');  
+```javascript
+const client = filestack.init('YOUR_API_KEY');  
 client.upload(file).then(response => {
   // Handle optimized image delivery
 });
 
 
-## Live Demo
-
-You can view the example live by opening the FilestackEnhanceECommerceImageManagement.html file in your browser after replacing the API key.
-
-## License
-
-This project is licensed under the MIT License.
-
-## Resources
-
-Filestack Documentation (https://www.filestack.com/docs/)
-
-Happy coding! 🚀
 
