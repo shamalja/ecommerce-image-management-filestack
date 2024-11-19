@@ -66,6 +66,11 @@ client.upload(file).then(response => {
 });  
 
 
+
+
+
+
+
 ## Live Demo
 
 You can view the example live by opening the FilestackEnhanceECommerceImageManagement.html file in your browser after replacing the API key.
