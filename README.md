@@ -65,6 +65,8 @@ client.upload(file).then(response => {
   // Handle optimized image delivery
 });  
 
+`
+
 
 ## Live Demo
 
