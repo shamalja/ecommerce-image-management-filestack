@@ -47,7 +47,8 @@ The optimized image will display on the screen with details.
 ### Key Transformations
 
 **javascript** 
-`const optimizedImageUrl = `https://cdn.filestackcontent.com/smart_crop=width:400,height:400/enhance=preset:auto/cache=expiry:3600/${fileHandle}`;`
+
+`const optimizedImageUrl = `https://cdn.filestackcontent.com/smart_crop=width:400,height:400/enhance=preset:auto/cache=expiry:3600/${fileHandle}`;
 
 - Smart Cropping: Dynamically adjusts dimensions for product images.
 - Auto-Enhancement: Improves image quality.
@@ -61,15 +62,18 @@ The Filestack JavaScript SDK is used to handle image uploads:
 ```const client = filestack.init('YOUR_API_KEY');
 client.upload(file).then(response => {
   // Handle optimized image delivery
-});```
+});
 
 ## Live Demo
+
 You can view the example live by opening the FilestackEnhanceECommerceImageManagement.html file in your browser after replacing the API key.
 
 ## License
+
 This project is licensed under the MIT License.
 
 ## Resources
+
 Filestack Documentation (https://www.filestack.com/docs/)
 
 Happy coding! 🚀
