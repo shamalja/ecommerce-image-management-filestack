@@ -66,4 +66,19 @@ client.upload(file).then(response => {
 });
 
 
+## Live Demo
+
+You can view the example live by opening the FilestackEnhanceECommerceImageManagement.html file in your browser after replacing the API key.
+
+## License
+
+This project is licensed under the MIT License.
+
+## Resources
+
+Filestack Documentation (https://www.filestack.com/docs/)
+
+Happy coding! 🚀
+
+
 
