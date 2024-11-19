@@ -59,12 +59,10 @@ The Filestack JavaScript SDK is used to handle image uploads:
 
 **javascript**
 
-```javascript
 const client = filestack.init('YOUR_API_KEY');  
 client.upload(file).then(response => {
   // Handle optimized image delivery
-});```  
-
+}); 
 
 ## Live Demo
 
