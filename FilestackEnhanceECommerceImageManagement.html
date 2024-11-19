@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-commerce Image Management with Filestack</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+    .container {
+      max-width: 600px;
+      text-align: center;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+    .upload-button {
+      display: inline-block;
+      padding: 10px 20px;
+      margin-top: 20px;
+      font-size: 16px;
+      color: #fff;
+      background-color: #4CAF50;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .upload-button:hover {
+      background-color: #45a049;
+    }
+    #uploadedImage {
+      max-width: 100%;
+      margin-top: 20px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      display: none;
+    }
+    .tagline {
+      margin-top: 15px;
+      color: gray;
+    }
+    .file-info {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #555;
+    }
+    input[type="file"] {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>E-commerce Image Optimization</h1>
+    <p>Upload product images</p>
+
+    <!-- Custom upload button -->
+    <label for="fileInput" class="upload-button">Choose Image</label>
+    <input type="file" id="fileInput" accept="image/*">
+    <p id="fileName" class="file-info">No file selected</p>
+
+    <!-- Image preview -->
+    <img id="uploadedImage" alt="Uploaded Product Image">
+    <p id="imageInfo" class="tagline"></p>
+  </div>
+
+  <!-- Include the Filestack JavaScript SDK -->
+  <script src="https://static.filestackapi.com/filestack-js/3.27.0/filestack.min.js"></script>
+
+  <script>
+    // Initialize Filestack client
+    const client = filestack.init('YOUR_API_KEY'); // Replace with your Filestack API key 
+
+    // Function to handle image upload, optimization and enhancements
+    function uploadAndOptimizeImage(file) {
+      client.upload(file)
+        .then(response => {
+          const fileHandle = response.handle;
+          console.log('File Handle:', fileHandle);
+
+          // Construct optimized URL with Filestack transformations and auto enhancement
+          const optimizedImageUrl = `https://cdn.filestackcontent.com/smart_crop=width:400,height:400/enhance=preset:auto/cache=expiry:3600/${fileHandle}`;
+          
+          // Display the optimized image
+          const uploadedImage = document.getElementById('uploadedImage');
+          uploadedImage.src = optimizedImageUrl;
+          uploadedImage.style.display = 'block';
+
+          // Provide image information
+          document.getElementById('imageInfo').innerText = `Optimized with transformation, enhancement and delivered via CDN.`;
+        })
+        .catch(error => {
+          console.error('Error uploading image:', error);
+          alert('Failed to upload and optimize image. Please try again.');
+        });
+    }
+
+    // Event listener for file input
+    const fileInput = document.getElementById('fileInput');
+    const fileNameDisplay = document.getElementById('fileName');
+
+    fileInput.addEventListener('change', (event) => {
+      const file = event.target.files[0];
+      if (file) {
+        fileNameDisplay.innerText = `Selected File: ${file.name}`;
+        uploadAndOptimizeImage(file);
+      } else {
+        fileNameDisplay.innerText = 'No file selected';
+      }
+    });
+  </script>
+</body>
+</html>
